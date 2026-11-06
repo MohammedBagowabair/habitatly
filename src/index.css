@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-forest: #244c3b;
+  --color-sage: #91a98c;
+  --color-lime: #c7db9a;
+  --color-ivory: #f8f8f3;
+  --color-paper: #ffffff;
+  --color-ink: #252d29;
+  --color-mist: #78847b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #c7db9a;
+  color: #244c3b;
+}
+
+:focus-visible {
+  outline: 2px solid #244c3b;
+  outline-offset: 3px;
+}
+
+input[type="range"] {
+  accent-color: #244c3b;
+}
+
+input[type="checkbox"] {
+  accent-color: #244c3b;
+}
+
+* {
+  scrollbar-color: #91a98c #f8f8f3;
+}
+
+.page-enter {
+  animation: page-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scan-line {
+  animation: scanline 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-120%);
+  }
+  100% {
+    transform: translateY(420%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .page-enter,
+  .scan-line {
+    animation: none;
+  }
+}
